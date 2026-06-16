@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Manrope:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void-black:       #050510;
+  --dark-ultramarine: #120A8F;
+  --violet:           #8A2BE2;
+  --cyan:             #00FFFF;
+
+  --font-outfit:  'Outfit';
+  --font-manrope: 'Manrope';
+}
+
+@layer base {
+  body {
+    background-color: var(--void-black);
+    color: white;
+    font-family: var(--font-manrope);
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #8A2BE2 0%, #120A8F 100%);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    transition: all 0.3s;
+  }
+
+  .aurora-bg {
+    background: radial-gradient(circle at 20% 30%, var(--dark-ultramarine) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--violet) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #0a0a20 0%, transparent 60%);
+    background-size: 200% 200%;
+  }
+}
+
+/* ── Component utility classes ─────────────────────────────────────── */
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.image-transition {
+  transition: background-image 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── Intersection Observer reveal animations ────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wf-connector {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.wf-connector.in-view {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* ── Keyframe animations ────────────────────────────────────────────── */
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-slower {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes floatCustom {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-20px); }
+}
+
+.animate-float-custom {
+  animation: floatCustom 6s ease-in-out infinite;
+}
+
+/* ── Logo hero animations ───────────────────────────────────────────── */
+
+@keyframes logoSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes logoSpinReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes logoBreath {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.045); }
+}
+
+@keyframes chipFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-9px); }
+}
+
+/* ── BrahmCloud badge shimmer ────────────────────────────────────────── */
+
+@keyframes brahmShimmer {
+  0%   { background-position: -250% center; }
+  100% { background-position:  250% center; }
+}
+
+.brahmcloud-text {
+  background: linear-gradient(
+    90deg,
+    #8A2BE2 0%,
+    #00FFFF 30%,
+    #ffffff 50%,
+    #00FFFF 70%,
+    #8A2BE2 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: brahmShimmer 3s linear infinite;
+}
+
+/* ── Lenis CSS ──────────────────────────────────────────────────────── */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
