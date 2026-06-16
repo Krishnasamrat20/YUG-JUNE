@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 import Magnetic from "@/components/Magnetic";
 import { ArrowRight, Globe, Zap, Heart, Shield } from "lucide-react";
 import Image from "next/image";
-import p1 from '../../p1.png';
+import p1 from '../../P1.png';
 import p2 from '../../p2.png';
 import p3 from '../../p3.png';
 import p4 from '../../p4.png';

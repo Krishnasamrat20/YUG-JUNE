@@ -3,7 +3,7 @@ import React from "react";
 import Reveal from "./Reveal";
 import Image from "next/image";
 import Link from "next/link";
-import p1 from "../p1.png";
+import p1 from "../P1.png";
 import p2 from "../p2.png";
 import p3 from "../p3.png";
 import p4 from "../p4.png";
